@@ -14,16 +14,16 @@ function div(a , b){
 
 // module.exports = math 
 
-// module.exports = {
-//    addfn : add , 
-//    subfn : sub , 
-//    mulfn : mul , 
-//    divfn : div 
-// }
 module.exports = {
-   add , 
-   sub , 
-   mul , 
-   div 
+   addfn : add , 
+   subfn : sub , 
+   mulfn : mul , 
+   divfn : div 
 }
+// module.exports = {
+//    add , 
+//    sub , 
+//    mul , 
+//    div 
+// }
 
