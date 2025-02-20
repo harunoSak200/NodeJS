@@ -175,17 +175,9 @@ const fs = require('fs') ;
 // });
 
 
-fs.watch('./test_directory/main.cpp', (eventType, filename) => {
-    console.log(`File ${filename} was modified. Event type: ${eventType}`);
-});
-
-
-
-
-
-
-
-
+// fs.watch('./test_directory/main.cpp', (eventType, filename) => {
+//     console.log(`File ${filename} was modified. Event type: ${eventType}`);
+// });
 
 
 /*refer this link of the chatgpt to get more about the file handling:
@@ -198,6 +190,9 @@ https://chatgpt.com/share/67adf048-a4dc-800f-b0cc-f8c2d262ba6d
 */
 
 
+const os = require('os');
+console.log(os.cpus().length) ; 
+console.log(os.cpus()) ; 
 
 
 

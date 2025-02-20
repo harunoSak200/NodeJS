@@ -1,5 +1,3 @@
-
-
 const http = require("http") ; 
 
 const fs = require('fs') ; 
@@ -7,8 +5,10 @@ const fs = require('fs') ;
 
 const myserver = http.createServer((req , res)=>{
    const log = `${Date.now()}: ${req.url} New Req Received\n` ; 
+
    fs.appendFile('./date.txt' , log , (err , data)=>{
-    const message = req.url ;
+       const message = req.url ;
+       console.log(message) ; 
     switch(message){
         case  '/' :
             res.end('welcome to the home..') ; 
@@ -27,8 +27,7 @@ const myserver = http.createServer((req , res)=>{
             break;
         default:
             res.end('404 Not Found....') ;
-
-    }
+      }
     
    }) ;
    
@@ -36,5 +35,6 @@ const myserver = http.createServer((req , res)=>{
 
 
 myserver.listen(8000 , ()=>{
-    console.log('server running on the http://localhost:8000')
-})
+    console.log('server running on the http://localhost:8000');
+});
+

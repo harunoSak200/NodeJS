@@ -3,18 +3,18 @@ const http = require("http") ;
 const url = require('url') ; 
 const fs = require('fs') ; 
 
-
 const myserver = http.createServer((req , res)=>{
    if(req.url == '/favicon.ico')return res.end() ;
    const log = `${Date.now()}: ${req.url} New Req Received\n` ; 
    const myurl = url.parse(req.url , true) ; 
-   console.log(myurl) ; 
+//    console.log(myurl) ; 
    
-   fs.appendFile('./date.txt' , log , (err , data)=>{
+   fs.appendFile('./date1.txt' , log , (err , data)=>{
     const message = myurl.pathname ;
     switch(message){
         case  '/' :
             res.end('welcome to the home..') ; 
+            // console.log(myurl.port)
             break;
         case '/about':
             const username = myurl.query.myname ;
@@ -32,6 +32,9 @@ const myserver = http.createServer((req , res)=>{
             break;
         default:
             res.end('404 Not Found....') ;
+            console.log(myurl.path) ; 
+            console.log(myurl) ; 
+            console.log(myurl.query.name) ; 
     }
     
    }) ;
