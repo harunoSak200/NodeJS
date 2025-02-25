@@ -1,5 +1,16 @@
 // creation of the hybrid server:
 
+
+
+
+/*
+ 
+The term "hybrid server" in this context likely refers to the fact that your Express server serves both HTML 
+and JSON data, making it a combination of a web server (serving HTML) and an API server.
+
+*/
+
+
 const express = require('express')
 const users = require("./Data_files/MOCK_DATA.json")
 const fs = require('fs')
@@ -13,21 +24,23 @@ app.use(express.json()) // middleware
 app.get('/users', (req, res) => {
   const html = `
     <ul>
-        ${users.map((user) => `<li>${user.first_name}</li>`).join('')} 
+        ${users.map((user) => `<li>${user.first_name}</li>`).join('')}     
     </ul>
   `;
+  // (read about map it ...)
 
   res.send(html);
 })
+
 app.get('/api/users' , (req , res)=>{ 
     return res.json(users) ;
     
 })
-app.get('/api/users-info/:id' , (req , res)=>{
+app.get('/api/users-info/:id' , (req , res)=>{        // (study about he req and the res object )
     
     const user_id = Number(req.params.id) ; 
     if(user_id > users.length){
-        res.send(`Only the ${users.length} exists in the database... sorry`);
+        res.send(`Only the ${users.length} not exists in the database... sorry`);
     }
 
     else {
@@ -75,7 +88,7 @@ app
     })
     .delete((req , res)=>{
         const id_value = Number(req.params.id) ; 
-        users.splice(id_value-1, 1); // used to delete the element from the list.
+        users.splice(id_value-1, 1); // used to delete the element from the list.    (read about it ...)
 
         fs.writeFile('./Data_files/MOCK_DATA.json' , JSON.stringify(users) , (err , data)=>{
             if(err){
@@ -95,12 +108,12 @@ app
         const data = req.body  
         data.id = Number(data.id) ; 
         data.id = users.length+1 ;
-        users.push(data) ; 
+        users.push(data) ;  
 
         
         const id_number = data.id ; 
 
-        fs.writeFile('./Data_files/MOCK_DATA.json' , JSON.stringify(users) , (err , data)=>{
+        fs.writeFile('./Data_files/MOCK_DATA.json' , JSON.stringify(users) , (err , data)=>{                 // (read about JSON.stringfy it ...)
             return res.json({
                 "status" : "sucess" , 
                  "id" : id_number
