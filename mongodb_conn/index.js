@@ -1,6 +1,3 @@
-
-
-
 const express = require('express')
 const users = require("./Data_files/MOCK_DATA.json")
 const mongoose = require('mongoose') ;
@@ -48,7 +45,7 @@ const User = mongoose.model('user' , userSchemma)
 
 
 
-app.use(express.urlencoded({extended:false})) ;  // study about it..
+app.use(express.urlencoded({extended:false})) ;  
 app.use(express.json()) ; 
  
 app.use((req , res , next)=>{
@@ -63,8 +60,6 @@ app.use((req , res , next)=>{
     })
 })
 
-
-// app.use(express.json()) // middleware plugin for the accesing the body...
 
 
 app.use((req , res , next)=>{
